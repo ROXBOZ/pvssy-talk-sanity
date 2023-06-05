@@ -21,8 +21,8 @@ export default defineType({
     defineField({
       name: 'relatedPain',
       title: 'Douleur(s) concernée(s)',
-      type: 'reference',
-      to: {type: 'pain'},
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'pain'}}],
     }),
   ],
 
@@ -30,17 +30,16 @@ export default defineType({
     select: {
       term: 'term',
       def: 'def',
-      relatedPain: 'relatedPain.name',
+      // relatedPain: 'relatedPain->{title}',
     },
     prepare(selection) {
-      const {term, def, relatedPain} = selection
-
-      const subtitle =
-        relatedPain && relatedPain.length > 0 ? `Concerne: ${relatedPain}` : 'Glossaire général'
+      const {term, def} = selection
+      // console.log('relatedPain :', relatedPain)
+      // const subtitle = relatedPain ? `Concerne: ${relatedPain}` : 'Glossaire général'
 
       return {
         title: term,
-        subtitle,
+        // subtitle,
         description: def,
       }
     },
