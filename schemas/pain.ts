@@ -16,7 +16,7 @@ export default defineType({
       name: 'slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
         slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
     }),
