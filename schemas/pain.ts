@@ -34,6 +34,7 @@ export default defineType({
       name: 'medicalApproach',
       title: 'Approche médicale',
       type: 'object',
+
       fields: [
         defineField({
           name: 'def',
@@ -49,16 +50,16 @@ export default defineType({
             hotspot: true,
           },
           fields: [
-            {
+            defineField({
               name: 'caption',
               type: 'string',
               title: 'Légende',
-            },
-            {
+            }),
+            defineField({
               name: 'alternativeText',
               type: 'string',
               title: 'Texte alternatif (voiceOver)',
-            },
+            }),
           ],
         }),
 
@@ -70,16 +71,16 @@ export default defineType({
             hotspot: true,
           },
           fields: [
-            {
+            defineField({
               name: 'caption',
               type: 'string',
               title: 'Légende',
-            },
-            {
+            }),
+            defineField({
               name: 'alternativeText',
               type: 'string',
               title: 'Texte alternatif (voiceOver)',
-            },
+            }),
           ],
         }),
 
@@ -111,68 +112,69 @@ export default defineType({
       ],
     }),
 
-    defineField({
-      name: 'sexologicApproach',
-      title: 'Approche sexologique',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'body',
-          title: 'Moi et mon corps',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'norms',
-          title: 'Normes genrées',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'everydayLife',
-          title: 'Vie quotidienne',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'libido',
-          title: 'Libido',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'charge',
-          title: 'Charge mentale et communication',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'consent',
-          title: 'Sexe et consentement',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'mental',
-          title: 'Santé mentale',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'parenthood',
-          title: 'Parentalité',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'checkup',
-          title: 'Avec les pros de la santé',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'treatments',
-          title: 'Quels soins pour me soulager ?',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'pleasure',
-          title: 'Plaisir / anti-douleur',
-          type: 'blockContent',
-        }),
-      ],
-    }),
+    // defineField({
+    //   name: 'sexologicApproach',
+    //   title: 'Approche sexologique',
+    //   type: 'object',
+
+    //   fields: [
+    //     defineField({
+    //       name: 'body',
+    //       title: 'Moi et mon corps',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'norms',
+    //       title: 'Normes genrées',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'everydayLife',
+    //       title: 'Vie quotidienne',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'libido',
+    //       title: 'Libido',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'charge',
+    //       title: 'Charge mentale et communication',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'consent',
+    //       title: 'Sexe et consentement',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'mental',
+    //       title: 'Santé mentale',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'parenthood',
+    //       title: 'Parentalité',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'checkup',
+    //       title: 'Avec les pros de la santé',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'treatments',
+    //       title: 'Quels soins pour me soulager ?',
+    //       type: 'blockContent',
+    //     }),
+    //     defineField({
+    //       name: 'pleasure',
+    //       title: 'Plaisir / anti-douleur',
+    //       type: 'blockContent',
+    //     }),
+    //   ],
+    // }),
   ],
 
   preview: {
