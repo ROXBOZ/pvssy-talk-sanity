@@ -21,6 +21,7 @@ export default defineType({
       },
     }),
     defineField({
+      //
       name: 'filters',
       title: 'Filtres (Où as-tu mal ?)',
       type: 'array',
