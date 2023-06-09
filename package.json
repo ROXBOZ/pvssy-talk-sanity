@@ -9,7 +9,8 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "both": "concurrently \"nodemon index.js\" \"cd ../client && npm start\""
   },
   "keywords": [
     "sanity"
@@ -27,6 +28,7 @@
     "@types/react": "^18.0.25",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.6.0",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "typescript": "^4.9.5"
   },
