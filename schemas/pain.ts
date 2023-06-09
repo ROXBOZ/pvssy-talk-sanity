@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'test',
+      title: 'test',
+      type: 'string',
+    }),
+    defineField({
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -21,7 +26,6 @@ export default defineType({
       },
     }),
     defineField({
-      //
       name: 'filters',
       title: 'Filtres (Où as-tu mal ?)',
       type: 'array',
