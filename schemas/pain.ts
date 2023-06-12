@@ -21,24 +21,25 @@ export default defineType({
           input.toLowerCase().replace(/\s+/g, '-').replace(/à/g, '\xE0').slice(0, 200),
       },
     }),
-    // defineField({
-    //   name: 'filters',
-    //   title: 'Filtres (Où as-tu mal ?)',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'string',
-    //       options: {
-    //         list: [
-    //           {title: 'Vulve', value: 'vulve'},
-    //           {title: 'Vagin', value: 'vagin'},
-    //           {title: 'Utérus', value: 'utérus'},
-    //           {title: 'Règles', value: 'règles'},
-    //         ],
-    //       },
-    //     },
-    //   ],
-    // }),
+    defineField({
+      name: 'filters',
+      title: 'Filtres (Où as-tu mal ?)',
+      type: 'array',
+
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Vulve', value: 'vulve'},
+              {title: 'Vagin', value: 'vagin'},
+              {title: 'Utérus', value: 'utérus'},
+              {title: 'Règles', value: 'règles'},
+            ],
+          },
+        },
+      ],
+    }),
     defineField({
       name: 'mainImage',
       title: 'Image de couverture',
@@ -51,44 +52,45 @@ export default defineType({
       name: 'medicalApproach',
       title: 'Approche médicale',
       type: 'object',
+
       fields: [
         defineField({
           name: 'def',
           title: 'Définition',
           type: 'blockContent',
         }),
-        // defineField({
-        //   name: 'schemas',
-        //   title: 'Schémas',
-        //   type: 'array',
-        //   of: [
-        //     {
-        //       type: 'object',
-        //       fields: [
-        //         defineField({
-        //           name: 'schemaImage',
-        //           title: 'Schéma',
-        //           type: 'image',
-        //           options: {
-        //             hotspot: true,
-        //           },
-        //           fields: [
-        //             defineField({
-        //               name: 'caption',
-        //               type: 'string',
-        //               title: 'Légende',
-        //             }),
-        //             defineField({
-        //               name: 'alternativeText',
-        //               type: 'blockContent',
-        //               title: 'Texte alternatif (pour les personnes malvoyantes)',
-        //             }),
-        //           ],
-        //         }),
-        //       ],
-        //     },
-        //   ],
-        // }),
+        defineField({
+          name: 'schemas',
+          title: 'Schémas',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'schemaImage',
+                  title: 'Schéma',
+                  type: 'image',
+                  options: {
+                    hotspot: true,
+                  },
+                  fields: [
+                    defineField({
+                      name: 'caption',
+                      type: 'string',
+                      title: 'Légende',
+                    }),
+                    defineField({
+                      name: 'alternativeText',
+                      type: 'blockContent',
+                      title: 'Texte alternatif (pour les personnes malvoyantes)',
+                    }),
+                  ],
+                }),
+              ],
+            },
+          ],
+        }),
         defineField({
           name: 'diag',
           title: 'Diagnostic',
