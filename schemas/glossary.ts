@@ -29,18 +29,12 @@ export default defineType({
   preview: {
     select: {
       term: 'term',
-      def: 'def',
-      // relatedPain: 'relatedPain->{title}',
     },
     prepare(selection) {
-      const {term, def} = selection
-      // console.log('relatedPain :', relatedPain)
-      // const subtitle = relatedPain ? `Concerne: ${relatedPain}` : 'Glossaire général'
+      const {term} = selection
 
       return {
         title: term,
-        // subtitle,
-        description: def,
       }
     },
   },
