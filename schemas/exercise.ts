@@ -15,6 +15,11 @@ export default defineType({
       title: 'test',
       type: 'string',
     }),
+    defineField({
+      name: 'test2',
+      title: 'test2',
+      type: 'string',
+    }),
   ],
 
   preview: {
