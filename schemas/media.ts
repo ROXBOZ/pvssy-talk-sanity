@@ -1,17 +1,5 @@
 import {defineField, defineType} from 'sanity'
 
-interface MediaDocument {
-  title: string
-  author: string
-  editor: string
-  year: string
-  edition: number
-  isFootnote: boolean
-  relatedPain: {_type: 'reference'; _ref: string}[]
-  filters: string
-  url?: string
-}
-
 export default defineType({
   name: 'media',
   title: 'Littérature et médias',
@@ -47,6 +35,7 @@ export default defineType({
       name: 'isFootnote',
       title: 'Lister dans la bibliographie',
       type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'relatedPain',
@@ -55,12 +44,12 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'pain'}}],
     }),
     defineField({
-      name: 'filters',
+      name: 'filter',
       title: 'Filtres (Catégories)',
       type: 'string',
       options: {
         list: [
-          {title: 'Livres/BD', value: 'livre'},
+          {title: 'Livres/BD', value: 'livres'},
           {title: 'Articles', value: 'articles'},
           {title: 'Podcasts', value: 'podcasts'},
           {title: 'Vidéos/films', value: 'videos'},
