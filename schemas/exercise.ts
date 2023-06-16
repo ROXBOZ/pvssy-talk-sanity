@@ -7,25 +7,52 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Titre',
       type: 'string',
     }),
     defineField({
-      name: 'test',
-      title: 'test',
+      name: 'exerciseIntro',
+      title: 'Introduction',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'video',
+      title: 'Vidéo URL (YouTube)',
       type: 'string',
     }),
     defineField({
-      name: 'test2',
-      title: 'test2',
-      type: 'string',
+      name: 'steps',
+      title: 'Étapes clés',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Titre',
+              type: 'string',
+            }),
+            defineField({
+              name: 'stepDescription',
+              title: 'Description',
+              type: 'blockContent',
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'relatedPain',
+      title: 'Douleur(s) concernée(s)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'pain'}}],
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
     },
     prepare(selection) {
       return {...selection}

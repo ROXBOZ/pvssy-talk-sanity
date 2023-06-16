@@ -8,7 +8,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Titre',
       type: 'string',
     }),
     defineField({
@@ -18,25 +18,26 @@ export default defineType({
     }),
     defineField({
       name: 'editor',
-      title: 'Maison d’édition',
+      title: 'Maison d’édition / production',
       type: 'string',
     }),
     defineField({
       name: 'year',
       title: 'Année de publication',
-      type: 'string',
-    }),
-    defineField({
-      name: 'edition',
-      title: 'Édition (1ère, 2ème, etc.)',
       type: 'number',
     }),
-    defineField({
-      name: 'isFootnote',
-      title: 'Lister dans la bibliographie',
-      type: 'boolean',
-      initialValue: false,
-    }),
+    // defineField({
+    //   name: 'edition',
+    //   title: 'Édition (1ère, 2ème, etc.)',
+    //   type: 'number',
+    // }),
+    // defineField({
+    //   name: 'isFootnote',
+    //   title: 'Lister dans la bibliographie',
+    //   type: 'boolean',
+    //   initialValue: false,
+    // }),
+
     defineField({
       name: 'relatedPain',
       title: 'Douleur(s) concernée(s)',
@@ -53,13 +54,14 @@ export default defineType({
           {title: 'Articles', value: 'articles'},
           {title: 'Podcasts', value: 'podcasts'},
           {title: 'Vidéos/films', value: 'videos'},
-          {title: 'Porno éthique et féministes', value: 'porno'},
+          {title: 'Porno éthique et féministe', value: 'porno'},
         ],
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'url',
-      title: 'URL',
+      title: 'URL - si disponible online (pas de site de vente)',
       type: 'string',
     }),
   ],
