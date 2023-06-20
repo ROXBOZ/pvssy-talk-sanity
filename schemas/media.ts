@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'media',
-  title: 'Littérature et médias',
+  title: 'Médias',
   type: 'document',
 
   fields: [
