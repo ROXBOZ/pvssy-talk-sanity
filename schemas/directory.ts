@@ -4,26 +4,29 @@ export default defineType({
   name: 'directory',
   title: 'Annuaire',
   type: 'document',
-
   fields: [
     defineField({
-      name: 'itemType',
-      title: 'Type',
+      name: 'category',
+      title: 'Catégorie',
       type: 'string',
       options: {
         list: [
-          {title: 'Personne', value: 'person'},
-          {title: 'Entité', value: 'entity'},
+          {title: 'Sexologie', value: 'sexology'},
+          {title: 'Médical', value: 'medical'},
+          {title: 'Shop', value: 'shop'},
+          {title: 'Association', value: 'association'},
+          {title: 'Plateforme digitale', value: 'website'},
         ],
       },
-      initialValue: 'person',
     }),
+
     defineField({
       name: 'firstName',
       title: 'Prénom',
       type: 'string',
-      hidden: ({parent}) => parent?.itemType !== 'person',
+      hidden: ({parent}) => parent?.category !== 'sexology' && parent?.category !== 'medical',
     }),
+
     defineField({
       name: 'name',
       title: 'Nom',
@@ -34,19 +37,24 @@ export default defineType({
       name: 'profession',
       title: 'Profession',
       type: 'string',
-      hidden: ({parent}) => parent?.itemType !== 'person',
+      hidden: ({parent}) => parent?.category !== 'sexology' && parent?.category !== 'medical',
     }),
 
     defineField({
-      name: 'directoryIntro',
+      name: 'tagline',
       title: 'Accroche',
       type: 'string',
-      hidden: ({parent}) => parent?.itemType !== 'entity',
+      hidden: ({parent}) =>
+        parent?.category !== 'shop' &&
+        parent?.category !== 'association' &&
+        parent?.category !== 'website',
     }),
+
     defineField({
-      name: 'address',
+      name: 'addresses',
       title: 'Adresses',
       type: 'array',
+      hidden: ({parent}) => parent?.category !== 'shop',
       of: [
         {
           type: 'object',
@@ -66,47 +74,24 @@ export default defineType({
         },
       ],
     }),
+
     defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
     }),
+
     defineField({
       name: 'url',
       title: 'Site internet',
       type: 'string',
     }),
+
     defineField({
       name: 'relatedPain',
       title: 'Douleur(s) concernée(s)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'pain'}}],
-    }),
-    defineField({
-      name: 'filterPerson',
-      title: 'Filtres (Catégories)',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Gynécologue', value: 'gynecologist'},
-          {title: 'Sexologue', value: 'sexologist'},
-        ],
-      },
-      initialValue: 'gynecologist',
-      hidden: ({parent}) => parent?.itemType !== 'person',
-    }),
-    defineField({
-      name: 'filterEntity',
-      title: 'Filtres (Catégories)',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Association', value: 'association'},
-          {title: 'Boutique', value: 'shop'},
-        ],
-      },
-      initialValue: 'association',
-      hidden: ({parent}) => parent?.itemType !== 'entity',
     }),
   ],
 
