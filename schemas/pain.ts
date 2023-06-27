@@ -82,8 +82,9 @@ export default defineType({
                     }),
                     defineField({
                       name: 'alternativeText',
-                      type: 'blockContent',
+                      type: 'string',
                       title: 'Texte alternatif (pour les personnes malvoyantes)',
+                      validation: (Rule) => Rule.required(),
                     }),
                   ],
                 }),
