@@ -18,7 +18,13 @@ export default defineType({
       options: {
         source: 'name',
         slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, '-').replace(/à/g, '\xE0').slice(0, 200),
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/à/g, 'a')
+            .replace(/é/g, 'e')
+            .slice(0, 200)
+            .replace(/’/g, '-'),
       },
     }),
     defineField({
@@ -60,7 +66,7 @@ export default defineType({
           type: 'blockContent',
         }),
         defineField({
-          name: 'schemas',
+          name: 'diagrams',
           title: 'Schémas',
           type: 'array',
           of: [
@@ -68,7 +74,7 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({
-                  name: 'schemaImage',
+                  name: 'diagram',
                   title: 'Schéma',
                   type: 'image',
                   options: {

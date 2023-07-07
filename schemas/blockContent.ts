@@ -1,15 +1,76 @@
-import {defineType, defineArrayMember} from 'sanity'
+// import {defineType, defineArrayMember} from 'sanity'
+// import React from 'react'
+// import './admin.css'
 
-/**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
- */
+// export default defineType({
+//   title: 'Block Content',
+//   name: 'blockContent',
+//   type: 'array',
+//   of: [
+//     defineArrayMember({
+//       title: 'Block',
+//       type: 'block',
+//       styles: [
+//         {title: 'Normal', value: 'normal'},
+//         {title: 'H3', value: 'h3'},
+//       ],
+//       lists: [{title: 'Liste', value: 'bullet'}],
+//       marks: {
+//         decorators: [
+//           {title: 'Gras', value: 'strong'},
+//           {title: 'Italique', value: 'em'},
+//           {title: 'Souligné', value: 'underline'},
+//           {
+//             title: 'Logo',
+//             value: 'logo',
+//             blockEditor: {
+//               render: ({children}) => React.createElement('span', {className: 'logo'}, children),
+//               icon: () => '🍑',
+//             },
+//           },
+//         ],
+//         annotations: [
+//           {
+//             title: 'URL',
+//             name: 'link',
+//             type: 'object',
+//             fields: [
+//               {
+//                 title: 'URL',
+//                 name: 'href',
+//                 type: 'url',
+//                 validation: (Rule) =>
+//                   Rule.uri({
+//                     scheme: ['http', 'https', 'mailto'],
+//                   }),
+//               },
+//             ],
+//           },
+//           {
+//             name: 'internalLink',
+//             type: 'object',
+//             title: 'Glossaire',
+//             fields: [
+//               {
+//                 name: 'reference',
+//                 type: 'reference',
+//                 title: 'Reference',
+//                 to: [{type: 'glossary'}],
+//               },
+//             ],
+//             blockEditor: {
+//               icon: () => '📖',
+//             },
+//           },
+//         ],
+//       },
+//     }),
+//   ],
+// })
+import {defineType, defineArrayMember} from 'sanity'
+import React from 'react'
+import './admin.css'
+
 export default defineType({
   title: 'Block Content',
   name: 'blockContent',
@@ -18,28 +79,25 @@ export default defineType({
     defineArrayMember({
       title: 'Block',
       type: 'block',
-      // Styles let you set what your user can mark up blocks with. These
-      // correspond with HTML tags, but you can set any title or value
-      // you want and decide how you want to deal with it where you want to
-      // use your content.
       styles: [
         {title: 'Normal', value: 'normal'},
-        // {title: 'H1', value: 'h1'},
-        // {title: 'H2', value: 'h2'},
-        // {title: 'H3', value: 'h3'},
-        // {title: 'H4', value: 'h4'},
-        // {title: 'Quote', value: 'blockquote'},
+        {title: 'H3', value: 'h3'},
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}],
-      // Marks let you mark up inline text in the block editor.
+      lists: [{title: 'Liste', value: 'bullet'}],
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
+          {title: 'Gras', value: 'strong'},
+          {title: 'Italique', value: 'em'},
+          {title: 'Souligné', value: 'underline'},
+          {
+            title: 'Logo',
+            value: 'logo',
+            blockEditor: {
+              render: ({children}) => React.createElement('span', {className: 'logo'}, children),
+              icon: () => '🍑',
+            },
+          },
         ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
             title: 'URL',
@@ -50,18 +108,36 @@ export default defineType({
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                validation: (Rule) =>
+                  Rule.uri({
+                    scheme: ['http', 'https', 'mailto'],
+                  }),
               },
             ],
+          },
+          {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Glossaire',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [{type: 'glossary'}],
+              },
+            ],
+            blockEditor: {
+              icon: () => '📖',
+            },
+            toPreview: ({reference}) => {
+              const slug = slugify(reference)
+              const currentURL = window.location.href
+              return `${currentURL}/glossaire/#${slug}`
+            },
           },
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
-    // defineArrayMember({
-    //   type: 'image',
-    //   options: {hotspot: true},
-    // }),
   ],
 })

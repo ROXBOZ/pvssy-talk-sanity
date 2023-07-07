@@ -19,6 +19,25 @@ export default defineType({
     }),
 
     defineField({
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'term',
+        slugify: (input) =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/à/g, 'a')
+            .replace(/é/g, 'e')
+            .slice(0, 200)
+            .replace(/’/g, '-'),
+      },
+      description:
+        'partie visible dans l’URL après le "#" lorsqu’on clique sur un terme dans un article',
+    }),
+
+    defineField({
       name: 'relatedPain',
       title: 'Douleur(s) concernée(s)',
       type: 'array',

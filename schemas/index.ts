@@ -4,5 +4,6 @@ import directory from './directory'
 import glossary from './glossary'
 import exercise from './exercise'
 import media from './media'
+import page from './page'
 
-export const schemaTypes = [pain, glossary, exercise, media, directory, blockContent]
+export const schemaTypes = [blockContent, pain, directory, glossary, exercise, media, page]
