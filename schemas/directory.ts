@@ -1,5 +1,19 @@
 import {defineField, defineType} from 'sanity'
-
+interface PreviewValue {
+  title: any
+  isValidated?: boolean
+  media?:
+    | string
+    | number
+    | boolean
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | React.ReactFragment
+    | React.ReactPortal
+    | React.ComponentClass<any>
+    | React.FunctionComponent<any>
+    | null
+    | undefined
+}
 export default defineType({
   name: 'directory',
   title: 'Annuaire',
@@ -93,14 +107,25 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'pain'}}],
     }),
+    defineField({
+      name: 'isValidated',
+      title: 'Validé',
+      type: 'boolean',
+    }),
   ],
 
   preview: {
     select: {
       title: 'name',
+      isValidated: 'isValidated',
     },
-    prepare(selection) {
-      return {...selection}
+    prepare({title, isValidated}: PreviewValue) {
+      const validationStatus = isValidated ? '' : 'à valider'
+
+      return {
+        title,
+        subtitle: validationStatus,
+      }
     },
   },
 })

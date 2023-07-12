@@ -95,6 +95,19 @@ export default defineType({
                   ],
                 }),
               ],
+              preview: {
+                select: {
+                  caption: 'diagram.caption',
+                  media: 'diagram',
+                },
+                prepare(selection) {
+                  const {caption, media} = selection
+                  return {
+                    title: caption || 'Untitled Diagram',
+                    media,
+                  }
+                },
+              },
             },
           ],
         }),
