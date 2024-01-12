@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Titre de la page',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -29,13 +30,12 @@ export default defineType({
         'Modifier le slug entrainera une rupture des liens vers cette dernière. Voir avec Roxanne!',
     }),
     defineField({
-      name: 'mainImage',
+      name: 'image',
       title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-
       fields: [
         defineField({
           name: 'alternativeText',
@@ -49,11 +49,13 @@ export default defineType({
       name: 'subtitle',
       title: 'En-tête',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'sections',
       title: 'Sections',
       type: 'array',
+      validation: (Rule) => Rule.required(),
 
       of: [
         {

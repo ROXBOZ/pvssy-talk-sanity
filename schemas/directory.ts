@@ -111,6 +111,8 @@ export default defineType({
       name: 'isValidated',
       title: 'Validé',
       type: 'boolean',
+      initialValue: false,
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

@@ -24,6 +24,7 @@ export default defineType({
       name: 'steps',
       title: 'Étapes clés',
       type: 'array',
+
       of: [
         {
           type: 'object',
@@ -47,6 +48,12 @@ export default defineType({
       title: 'Douleur(s) concernée(s)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'pain'}}],
+    }),
+    defineField({
+      name: 'isValidated',
+      title: 'Validé',
+      type: 'boolean',
+      initialValue: false,
     }),
   ],
 
