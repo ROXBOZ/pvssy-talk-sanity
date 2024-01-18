@@ -43,6 +43,13 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'pain'}}],
     }),
+    defineField({
+      name: 'isValidated',
+      title: 'Validé',
+      type: 'boolean',
+      initialValue: false,
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 
   preview: {

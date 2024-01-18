@@ -15,6 +15,7 @@ export default defineType({
       name: 'author',
       title: 'Auteurice(s)',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'editor',
@@ -26,18 +27,6 @@ export default defineType({
       title: 'Année de publication',
       type: 'number',
     }),
-    // defineField({
-    //   name: 'edition',
-    //   title: 'Édition (1ère, 2ème, etc.)',
-    //   type: 'number',
-    // }),
-    // defineField({
-    //   name: 'isFootnote',
-    //   title: 'Lister dans la bibliographie',
-    //   type: 'boolean',
-    //   initialValue: false,
-    // }),
-
     defineField({
       name: 'relatedPain',
       title: 'Douleur(s) concernée(s)',
@@ -63,6 +52,13 @@ export default defineType({
       name: 'url',
       title: 'URL - si disponible online (pas de site de vente)',
       type: 'string',
+    }),
+    defineField({
+      name: 'isValidated',
+      title: 'Validé',
+      type: 'boolean',
+      initialValue: false,
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

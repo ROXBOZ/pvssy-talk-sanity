@@ -24,7 +24,6 @@ export default defineType({
       name: 'steps',
       title: 'Étapes clés',
       type: 'array',
-
       of: [
         {
           type: 'object',
@@ -54,6 +53,7 @@ export default defineType({
       title: 'Validé',
       type: 'boolean',
       initialValue: false,
+      validation: (Rule) => Rule.required(),
     }),
   ],
 
