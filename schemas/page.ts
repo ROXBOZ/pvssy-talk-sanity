@@ -2,12 +2,12 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'page',
-  title: 'Pages statiques',
+  title: 'Page',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Titre de la page',
+      title: 'Titre',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),

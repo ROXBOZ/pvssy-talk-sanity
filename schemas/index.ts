@@ -1,10 +1,21 @@
 import blockContent from './blockContent'
-import pain from './pain'
 import directory from './directory'
-import glossary from './glossary'
+import event from './event'
 import exercise from './exercise'
+import global from './global'
+import glossary from './glossary'
 import media from './media'
 import page from './page'
-import event from './event'
+import pain from './pain'
 
-export const schemaTypes = [blockContent, pain, directory, glossary, exercise, media, page, event]
+export const schemaTypes = [
+  blockContent,
+  pain,
+  directory,
+  glossary,
+  exercise,
+  media,
+  page,
+  event,
+  global,
+]
