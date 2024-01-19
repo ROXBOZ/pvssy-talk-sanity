@@ -16,9 +16,9 @@ export default defineConfig({
           .title('Content')
           .items([
             S.listItem()
-              .title('Global')
-              .id('global')
-              .child(S.document().schemaType('global').documentId('global')),
+              .title('Accueil')
+              .id('homepage')
+              .child(S.document().schemaType('homepage').documentId('homepage')),
             S.divider(),
             S.documentTypeListItem('page').title('Pages'),
             S.divider(),

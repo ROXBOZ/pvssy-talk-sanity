@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'global',
-  title: 'Global',
+  name: 'homepage',
+  title: 'Homepage',
   type: 'document',
   fields: [
     defineField({
@@ -16,6 +16,8 @@ export default defineType({
       name: 'marquee',
       title: 'Marquee',
       type: 'object',
+      description: 'Optionel',
+
       fields: [
         defineField({
           name: 'text',
@@ -66,15 +68,21 @@ export default defineType({
           type: 'blockContent',
           validation: (Rule) => [Rule.required()],
         }),
+
+        defineField({
+          name: 'navigation',
+          title: 'Navigation',
+          type: 'array',
+          of: [
+            defineField({
+              name: 'page',
+              title: 'Page',
+              type: 'reference',
+              to: [{type: 'page'}],
+            }),
+          ],
+        }),
       ],
     }),
   ],
-  preview: {
-    prepare() {
-      const title = 'Global'
-      return {
-        title: title,
-      }
-    },
-  },
 })

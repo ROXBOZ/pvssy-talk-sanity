@@ -23,11 +23,12 @@ export default defineType({
             .toLowerCase()
             .replace(/\s+/g, '-')
             .replace(/à/g, 'a')
+            .replace(/[^\w\s-]/g, '')
             .slice(0, 200)
             .replace(/’/g, '-'),
       },
       description:
-        'Modifier le slug entrainera une rupture des liens vers cette dernière. Voir avec Roxanne!',
+        'Modifier le slug peut entraîner des ruptures de lien. Donc, ne le faites que si vous savez ce que vous faites.',
     }),
     defineField({
       name: 'image',
