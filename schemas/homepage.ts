@@ -17,7 +17,6 @@ export default defineType({
       title: 'Marquee',
       type: 'object',
       description: 'Optionel',
-
       fields: [
         defineField({
           name: 'text',
@@ -62,6 +61,7 @@ export default defineType({
             Rule.max(160).warning('Les titres plus courts sont généralement meilleurs'),
           ],
         }),
+
         defineField({
           name: 'text',
           title: 'Text',
