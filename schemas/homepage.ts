@@ -47,42 +47,10 @@ export default defineType({
     }),
 
     defineField({
-      name: 'intro',
-      title: 'Intro',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'pitch',
-          title: 'Pitch',
-          type: 'text',
-          rows: 2,
-          validation: (Rule) => [
-            Rule.required().min(10).error('Un titre de min. 10 characters est requis'),
-            Rule.max(160).warning('Les titres plus courts sont généralement meilleurs'),
-          ],
-        }),
-
-        defineField({
-          name: 'text',
-          title: 'Text',
-          type: 'blockContent',
-          validation: (Rule) => [Rule.required()],
-        }),
-
-        defineField({
-          name: 'navigation',
-          title: 'Navigation',
-          type: 'array',
-          of: [
-            defineField({
-              name: 'page',
-              title: 'Page',
-              type: 'reference',
-              to: [{type: 'page'}],
-            }),
-          ],
-        }),
-      ],
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [{type: 'navBlock'}, {type: 'painsBlock'}, {type: 'textImageBlock'}],
     }),
   ],
 })
