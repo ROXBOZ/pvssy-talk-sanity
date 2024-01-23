@@ -29,9 +29,29 @@ export default defineType({
     }),
 
     defineField({
+      name: 'navigationType',
+      title: 'Type de Navigation',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Pages', value: 'pages'},
+          {title: 'Se soigner (Annuaire et exercices)', value: 'selfCare'},
+          {title: 'S’informer (Glossaire, médias et agenda)', value: 'selfLearning'},
+          {
+            title: 'Ressources complètes (Annuaire, exercices, glossaire, médias et agenda)',
+            value: 'allRessources',
+          },
+        ],
+      },
+      initialValue: 'pages',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'navigation',
       title: 'Navigation',
       type: 'array',
+      hidden: ({parent}) => parent?.navigationType !== 'pages',
       of: [
         defineField({
           name: 'page',
