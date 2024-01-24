@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 // import TimeInput from '../components/TimeInput' // Custom TimeInput component
 
 export default defineType({
-  name: 'events',
+  name: 'event',
   title: 'Évènements',
   type: 'document',
 
@@ -20,53 +20,49 @@ export default defineType({
       options: {
         layout: 'radio',
         direction: 'horizontal',
-        list: ['un jour', 'plusieurs jours'],
+        list: [
+          {title: 'Un jour', value: 'oneDay'},
+          {title: 'Plusieurs', value: 'manyDays'},
+        ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'eventDate',
       title: 'Date',
       type: 'date',
-
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventDuration !== 'un jour',
+      hidden: ({parent}) => parent?.eventDuration !== 'oneDay',
     }),
     defineField({
       name: 'eventStartTime',
       title: 'Heure de début',
       type: 'string',
-      // inputComponent: TimeInput, // Use the custom TimeInput component
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventDuration !== 'un jour',
+      hidden: ({parent}) => parent?.eventDuration !== 'oneDay',
     }),
     defineField({
       name: 'eventEndTime',
       title: 'Heure de fin',
       type: 'string',
-      // inputComponent: TimeInput, // Use the custom TimeInput component
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventDuration !== 'un jour',
+
+      hidden: ({parent}) => parent?.eventDuration !== 'oneDay',
     }),
     defineField({
       name: 'eventStartDate',
       title: 'Date de début',
       type: 'date',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventDuration !== 'plusieurs jours',
+
+      hidden: ({parent}) => parent?.eventDuration !== 'manyDays',
     }),
     defineField({
       name: 'eventEndDate',
       title: 'Date de fin',
       type: 'date',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventDuration !== 'plusieurs jours',
+
+      hidden: ({parent}) => parent?.eventDuration !== 'manyDays',
     }),
     defineField({
       name: 'shortDef',
       title: 'En bref',
       type: 'blockContent',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'longDef',
@@ -77,7 +73,6 @@ export default defineType({
       name: 'organizer',
       title: 'Organisé par',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'website',
@@ -91,31 +86,29 @@ export default defineType({
       options: {
         layout: 'radio',
         direction: 'horizontal',
-        list: ['Sur place', 'En ligne'],
+        list: [
+          {title: 'Sur place', value: 'onsite'},
+          {title: 'En ligne', value: 'online'},
+        ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'address',
       title: 'Adresse',
       type: 'string',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventLocation !== 'Sur place',
+      hidden: ({parent}) => parent?.eventLocation !== 'onsite',
     }),
     defineField({
       name: 'city',
       title: 'Lieu',
       type: 'string',
-
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventLocation !== 'Sur place',
+      hidden: ({parent}) => parent?.eventLocation !== 'onsite',
     }),
     defineField({
       name: 'region',
       title: 'Canton',
       type: 'string',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventLocation !== 'Sur place',
+      hidden: ({parent}) => parent?.eventLocation !== 'onsite',
       options: {
         list: ['Genève', 'Vaud', 'Neuchâtel', 'Jura', 'Fribourg', 'Valais'], // Add your region options here
       },
@@ -124,13 +117,13 @@ export default defineType({
       name: 'zoomLink',
       title: 'Lien réunion',
       type: 'string',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventLocation !== 'En ligne',
+      hidden: ({parent}) => parent?.eventLocation !== 'online',
     }),
     defineField({
       name: 'reservations',
       title: 'Réservations',
       type: 'object',
+
       fields: [
         defineField({
           name: 'telephone',
@@ -151,9 +144,11 @@ export default defineType({
       options: {
         layout: 'radio',
         direction: 'horizontal',
-        list: ['gratuite', 'payante'],
+        list: [
+          {title: 'Gratuit', value: 'free'},
+          {title: 'Payant', value: 'payable'},
+        ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'eventPriceType',
@@ -162,32 +157,29 @@ export default defineType({
       options: {
         layout: 'radio',
         direction: 'horizontal',
-        list: ['fourchette', 'tarif unique'],
+        list: [
+          {title: 'Fouchette de prix', value: 'fourchette'},
+          {title: 'uniquePrice', value: 'uniquePrice'},
+        ],
       },
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventPrice !== 'payante',
+      hidden: ({parent}) => parent?.eventPrice !== 'payable',
     }),
     defineField({
       name: 'uniquePrice',
-      title: 'Tarif unique',
+      title: 'uniquePrice',
       type: 'number',
-      validation: (Rule) => Rule.required(),
-      hidden: ({parent}) => parent?.eventPriceType !== 'tarif unique',
+      hidden: ({parent}) => parent?.eventPriceType !== 'uniquePrice',
     }),
     defineField({
       name: 'minPrice',
       title: 'Prix min.',
       type: 'number',
-
-      validation: (Rule) => Rule.required(),
       hidden: ({parent}) => parent?.eventPriceType !== 'fourchette',
     }),
     defineField({
       name: 'maxPrice',
       title: 'Prix min.',
       type: 'number',
-
-      validation: (Rule) => Rule.required(),
       hidden: ({parent}) => parent?.eventPriceType !== 'fourchette',
     }),
   ],

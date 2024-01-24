@@ -1,5 +1,7 @@
 import {defineField, defineType} from 'sanity'
 
+import {seo} from './seo'
+
 export default defineType({
   name: 'page',
   title: 'Page',
@@ -22,10 +24,14 @@ export default defineType({
           input
             .toLowerCase()
             .replace(/\s+/g, '-')
-            .replace(/à/g, 'a')
-            .replace(/[^\w\s-]/g, '')
             .slice(0, 200)
-            .replace(/’/g, '-'),
+            .replace(/’/g, '-')
+            .replace(/à/g, 'a')
+            .replace(/é/g, 'e')
+            .replace(/è/g, 'e')
+            .replace(/ê/g, 'e')
+            .replace(/ï/g, 'i')
+            .replace(/ü/g, 'u'),
       },
       description:
         'Modifier le slug peut entraîner des ruptures de lien. Donc, ne le faites que si vous savez ce que vous faites.',
@@ -91,6 +97,12 @@ export default defineType({
           ],
         },
       ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'Seo',
+      type: 'object',
+      fields: [...seo],
     }),
   ],
 

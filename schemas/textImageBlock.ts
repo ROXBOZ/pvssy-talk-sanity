@@ -19,8 +19,9 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Violet', value: 'violet'},
-          {title: 'Vert', value: 'green'},
+          {title: 'Primaire', value: 'primary'},
+          {title: 'Secondaire', value: 'secondary'},
+          {title: 'Tertiaire', value: 'tierary'},
         ],
       },
       validation: (Rule) => [Rule.required()],

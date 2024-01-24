@@ -1,5 +1,7 @@
 import {defineField, defineType} from 'sanity'
 
+import {seo} from './seo'
+
 export default defineType({
   name: 'homepage',
   title: 'Homepage',
@@ -51,6 +53,12 @@ export default defineType({
       title: 'Content',
       type: 'array',
       of: [{type: 'navBlock'}, {type: 'painsBlock'}, {type: 'textImageBlock'}],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'Seo',
+      type: 'object',
+      fields: [...seo],
     }),
   ],
 })
