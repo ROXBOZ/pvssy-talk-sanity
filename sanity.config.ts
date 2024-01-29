@@ -1,6 +1,7 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './schemas'
+import {structureTool} from 'sanity/structure'
+import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
 import {visionTool} from '@sanity/vision'
 
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    deskTool({
+    structureTool({
       structure: (S) =>
         S.list()
           .title('Content')
@@ -36,8 +37,8 @@ export default defineConfig({
             S.documentTypeListItem('media').title('Médias'),
           ]),
     }),
-    ,
     visionTool(),
+    vercelDeployTool(),
   ],
 
   schema: {
