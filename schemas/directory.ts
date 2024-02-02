@@ -25,8 +25,7 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Sexologie', value: 'sexology'},
-          {title: 'Médical', value: 'medical'},
+          {title: 'Spécialiste', value: 'specialist'},
           {title: 'Shop', value: 'shop'},
           {title: 'Association', value: 'association'},
           {title: 'Plateforme digitale', value: 'website'},
@@ -38,7 +37,7 @@ export default defineType({
       name: 'firstName',
       title: 'Prénom',
       type: 'string',
-      hidden: ({parent}) => parent?.category !== 'sexology' && parent?.category !== 'medical',
+      hidden: ({parent}) => parent?.category !== 'specialist',
     }),
 
     defineField({
@@ -50,40 +49,65 @@ export default defineType({
     defineField({
       name: 'profession',
       title: 'Profession',
-      type: 'string',
-      hidden: ({parent}) => parent?.category !== 'sexology' && parent?.category !== 'medical',
-    }),
-
-    defineField({
-      name: 'tagline',
-      title: 'Accroche',
-      type: 'string',
-      hidden: ({parent}) =>
-        parent?.category !== 'shop' &&
-        parent?.category !== 'association' &&
-        parent?.category !== 'website',
+      type: 'reference',
+      to: {type: 'profession'},
+      hidden: ({parent}) => parent?.category !== 'specialist',
     }),
 
     defineField({
       name: 'addresses',
       title: 'Adresses',
       type: 'array',
-      hidden: ({parent}) => parent?.category !== 'shop',
+      hidden: ({parent}) => parent?.category === 'website',
+
       of: [
         {
           type: 'object',
           fields: [
-            {
+            defineField({
               name: 'address',
               title: 'Adresse complète',
               type: 'string',
               placeholder: 'Rue du Lac 20, 1020 Renens',
-            },
-            {
+            }),
+            defineField({
+              name: 'region',
+              title: 'Région',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Genève', value: 'Genève'},
+                  {title: 'Vaud', value: 'Vaud'},
+                  {title: 'Neuchâtel', value: 'Neuchâtel'},
+                  {title: 'Jura', value: 'Jura'},
+                  {title: 'Fribourg', value: 'Fribourg'},
+                  {title: 'Valais', value: 'Valais'},
+                  {title: 'France voisine', value: 'France voisine'},
+                ],
+              },
+            }),
+            defineField({
+              name: 'isAccessible',
+              title: 'Adapté aux personnes à mobilité réduite',
+              type: 'boolean',
+              initialValue: true,
+            }),
+            defineField({
+              name: 'phoneIndicator',
+              title: 'Indicateur Pays',
+              type: 'string',
+              options: {
+                list: [
+                  {title: '+41 (Suisse)', value: '0041'},
+                  {title: '+33 (France)', value: '0033'},
+                ],
+              },
+            }),
+            defineField({
               name: 'phone',
               title: 'Téléphone',
               type: 'string',
-            },
+            }),
           ],
         },
       ],
@@ -107,6 +131,33 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'pain'}}],
     }),
+
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'tag'}}],
+    }),
+
+    defineField({
+      name: 'pricing',
+      title: 'Tarifs de consultation',
+      type: 'object',
+      hidden: ({parent}) => parent?.category !== 'specialist',
+      fields: [
+        defineField({
+          name: 'pricingMin',
+          title: 'Min',
+          type: 'number',
+        }),
+        defineField({
+          name: 'pricingMax',
+          title: 'Max',
+          type: 'number',
+        }),
+      ],
+    }),
+
     defineField({
       name: 'isValidated',
       title: 'Validé',

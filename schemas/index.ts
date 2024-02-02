@@ -12,7 +12,10 @@ import page from './page'
 import pageReference from './pageReference'
 import pain from './pain'
 import painsBlock from './painsBlock'
+import profession from './profession'
+import tag from './tag'
 import textImageBlock from './textImageBlock'
+import typeform from './typeform'
 
 export const schemaTypes = [
   blockContent,
@@ -30,4 +33,7 @@ export const schemaTypes = [
   menu,
   customLink,
   pageReference,
+  typeform,
+  tag,
+  profession,
 ]

@@ -35,6 +35,11 @@ export default defineConfig({
             S.documentTypeListItem('exercise').title('Exercices'),
             S.documentTypeListItem('glossary').title('Glossaire'),
             S.documentTypeListItem('media').title('Médias'),
+            S.divider(),
+            S.listItem()
+              .title('Typeforms')
+              .id('typeform')
+              .child(S.document().schemaType('typeform').documentId('typeform')),
           ]),
     }),
     visionTool(),

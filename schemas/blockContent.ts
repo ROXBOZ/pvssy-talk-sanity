@@ -1,6 +1,8 @@
-import {defineType, defineArrayMember} from 'sanity'
-import React from 'react'
 import './admin.css'
+
+import {defineArrayMember, defineType} from 'sanity'
+
+import React from 'react'
 
 export default defineType({
   title: 'Block Content',
