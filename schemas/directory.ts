@@ -47,6 +47,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'subtitle',
+      title: 'Sous-titre',
+      type: 'string',
+      description: 'Par ex: pour Fondation PROFA ==> Conseil en périnatalité',
+    }),
+
+    defineField({
       name: 'profession',
       title: 'Profession',
       type: 'reference',
