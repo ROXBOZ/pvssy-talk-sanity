@@ -13,6 +13,7 @@ import pageReference from './pageReference'
 import pain from './pain'
 import painsBlock from './painsBlock'
 import profession from './profession'
+import region from './region'
 import tag from './tag'
 import textImageBlock from './textImageBlock'
 import typeform from './typeform'
@@ -36,4 +37,5 @@ export const schemaTypes = [
   typeform,
   tag,
   profession,
+  region,
 ]

@@ -15,6 +15,7 @@ export default defineType({
       styles: [
         {title: 'Normal', value: 'normal'},
         {title: 'H3', value: 'h3'},
+        {title: 'H4', value: 'h4'},
       ],
       lists: [{title: 'Liste', value: 'bullet'}],
       marks: {
@@ -26,7 +27,8 @@ export default defineType({
             title: 'Logo',
             value: 'logo',
             blockEditor: {
-              render: ({children}) => React.createElement('span', {className: 'logo'}, children),
+              render: ({children}: any) =>
+                React.createElement('span', {className: 'logo'}, children),
               icon: () => '🍑',
             },
           },
@@ -63,7 +65,7 @@ export default defineType({
             blockEditor: {
               icon: () => '📖',
             },
-            toPreview: ({reference}) => {
+            toPreview: ({reference}: any) => {
               const slug = slugify(reference)
               const currentURL = window.location.href
               return `${currentURL}/glossaire/#${slug}`

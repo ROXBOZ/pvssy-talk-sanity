@@ -93,12 +93,14 @@ export default defineType({
                 ],
               },
             }),
+
             defineField({
-              name: 'isAccessible',
-              title: 'Adapté aux personnes à mobilité réduite',
-              type: 'boolean',
-              initialValue: true,
+              name: 'accessibility',
+              title: 'Acessibilité',
+              type: 'array',
+              of: [{type: 'reference', to: {type: 'tag'}}],
             }),
+
             defineField({
               name: 'phoneIndicator',
               title: 'Indicateur Pays',
@@ -140,8 +142,8 @@ export default defineType({
     }),
 
     defineField({
-      name: 'tags',
-      title: 'Tags',
+      name: 'recommendations',
+      title: 'Recommendations',
       type: 'array',
       of: [{type: 'reference', to: {type: 'tag'}}],
     }),
@@ -161,6 +163,20 @@ export default defineType({
           name: 'pricingMax',
           title: 'Max',
           type: 'number',
+        }),
+        defineField({
+          name: 'isReimbursed',
+          title: 'Est remboursé par l’assurance de base',
+          type: 'boolean',
+          initialValue: false,
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'isReimbursedComp',
+          title: 'Est remboursé par l’assurance complémentaire',
+          type: 'boolean',
+          initialValue: false,
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),

@@ -19,27 +19,51 @@ export default defineConfig({
             S.listItem()
               .title('Menus')
               .id('menu')
-              .child(S.document().schemaType('menu').documentId('menu')),
+              .child(S.document().schemaType('menu').documentId('menu'))
+              .icon(() => '🍑'),
             S.divider(),
             S.listItem()
               .title('Accueil')
               .id('homepage')
-              .child(S.document().schemaType('homepage').documentId('homepage')),
+              .child(S.document().schemaType('homepage').documentId('homepage'))
+              .icon(() => '🏠'),
             S.divider(),
-            S.documentTypeListItem('page').title('Pages'),
+            S.documentTypeListItem('page')
+              .title('Pages')
+              .icon(() => '📄'),
             S.divider(),
-            S.documentTypeListItem('pain').title('Douleurs'),
+            S.documentTypeListItem('pain')
+              .title('Douleurs')
+              .icon(() => '🔥'),
             S.divider(),
-            S.documentTypeListItem('event').title('Agenda'),
-            S.documentTypeListItem('directory').title('Annuaire'),
-            S.documentTypeListItem('exercise').title('Exercices'),
-            S.documentTypeListItem('glossary').title('Glossaire'),
-            S.documentTypeListItem('media').title('Médias'),
+            S.documentTypeListItem('event')
+              .title('Agenda')
+              .icon(() => '📅'),
+            S.documentTypeListItem('directory')
+              .title('Annuaire')
+              .icon(() => '📒'),
+            S.documentTypeListItem('exercise')
+              .title('Exercices')
+              .icon(() => {
+                return '🧘‍♀️'
+              }),
+            S.documentTypeListItem('glossary')
+              .title('Glossaire')
+              .icon(() => '📖'),
+            S.documentTypeListItem('media')
+              .title('Médias')
+              .icon(() => '🎙️'),
             S.divider(),
             S.listItem()
               .title('Typeforms')
               .id('typeform')
-              .child(S.document().schemaType('typeform').documentId('typeform')),
+              .child(S.document().schemaType('typeform').documentId('typeform'))
+              .icon(() => '📢'),
+            S.listItem()
+              .title('Régions')
+              .id('region')
+              .child(S.document().schemaType('region').documentId('region'))
+              .icon(() => '📍'),
           ]),
     }),
     visionTool(),
