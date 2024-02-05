@@ -15,7 +15,6 @@ export default defineType({
       name: 'author',
       title: 'Auteurice(s)',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'editor',

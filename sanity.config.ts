@@ -17,17 +17,10 @@ export default defineConfig({
           .title('Content')
           .items([
             S.listItem()
-              .title('Menus')
-              .id('menu')
-              .child(S.document().schemaType('menu').documentId('menu'))
-              .icon(() => '🍑'),
-            S.divider(),
-            S.listItem()
               .title('Accueil')
               .id('homepage')
               .child(S.document().schemaType('homepage').documentId('homepage'))
               .icon(() => '🏠'),
-            S.divider(),
             S.documentTypeListItem('page')
               .title('Pages')
               .icon(() => '📄'),
@@ -53,7 +46,16 @@ export default defineConfig({
             S.documentTypeListItem('media')
               .title('Médias')
               .icon(() => '🎙️'),
+            S.documentTypeListItem('product')
+              .title('Produits')
+              .icon(() => '🛍️'),
             S.divider(),
+            S.listItem()
+              .title('Menus')
+              .id('menu')
+              .child(S.document().schemaType('menu').documentId('menu'))
+              .icon(() => '🍑'),
+
             S.listItem()
               .title('Typeforms')
               .id('typeform')
