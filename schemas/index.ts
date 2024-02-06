@@ -12,6 +12,7 @@ import page from './page'
 import pageReference from './pageReference'
 import pain from './pain'
 import painsBlock from './painsBlock'
+import partnersLogos from './partnersLogos'
 import product from './product'
 import profession from './profession'
 import region from './region'
@@ -40,4 +41,5 @@ export const schemaTypes = [
   profession,
   region,
   product,
+  partnersLogos,
 ]

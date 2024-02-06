@@ -66,6 +66,11 @@ export default defineConfig({
               .id('region')
               .child(S.document().schemaType('region').documentId('region'))
               .icon(() => '📍'),
+            S.listItem()
+              .title('Logos')
+              .id('partnersLogos')
+              .child(S.document().schemaType('partnersLogos').documentId('partnersLogos'))
+              .icon(() => '🤝'),
           ]),
     }),
     visionTool(),
