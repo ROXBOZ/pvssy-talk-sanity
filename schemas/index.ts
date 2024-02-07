@@ -5,6 +5,7 @@ import event from './event'
 import exercise from './exercise'
 import glossary from './glossary'
 import homepage from './homepage'
+import map from './map'
 import media from './media'
 import menu from './menu'
 import navBlock from './navBlock'
@@ -42,4 +43,5 @@ export const schemaTypes = [
   region,
   product,
   partnersLogos,
+  map,
 ]

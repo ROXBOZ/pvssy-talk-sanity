@@ -7,9 +7,9 @@ export default defineType({
   fields: [
     defineField({
       name: 'headerMenu',
-      title: 'Header Menu',
+      title: 'Header Menu de BADASS',
       type: 'array',
-      of: [{type: 'pageReference'}, {type: 'customLink'}],
+      of: [{type: 'map'}, {type: 'pageReference'}, {type: 'customLink'}],
     }),
     defineField({
       name: 'footerMenu',

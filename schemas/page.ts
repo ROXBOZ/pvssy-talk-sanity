@@ -37,6 +37,12 @@ export default defineType({
         'Modifier le slug peut entraîner des ruptures de lien. Donc, ne le faites que si vous savez ce que vous faites.',
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'La description sera utilisée dans le menu de BADASS :D',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
