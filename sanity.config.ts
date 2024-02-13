@@ -49,6 +49,11 @@ export default defineConfig({
             S.documentTypeListItem('product')
               .title('Produits')
               .icon(() => '🛍️'),
+            S.listItem()
+              .title('SEO Ressources')
+              .id('seoManager')
+              .child(S.document().schemaType('seoManager').documentId('seoManager'))
+              .icon(() => '👩‍💻'),
             S.divider(),
             S.listItem()
               .title('Menus')

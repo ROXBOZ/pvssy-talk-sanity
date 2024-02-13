@@ -17,6 +17,8 @@ import partnersLogos from './partnersLogos'
 import product from './product'
 import profession from './profession'
 import region from './region'
+import {seo} from './seo'
+import seoManager from './seoManager'
 import tag from './tag'
 import textImageBlock from './textImageBlock'
 import typeform from './typeform'
@@ -44,4 +46,5 @@ export const schemaTypes = [
   product,
   partnersLogos,
   map,
+  seoManager,
 ]
