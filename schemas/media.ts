@@ -47,6 +47,14 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'tag'}}],
+    }),
+
     defineField({
       name: 'url',
       title: 'URL - si disponible online (pas de site de vente)',
