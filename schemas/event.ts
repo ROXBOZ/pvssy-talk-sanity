@@ -13,6 +13,14 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'relatedPain',
+      title: 'Douleur(s) concernée(s)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'pain'}}],
+    }),
+
     defineField({
       name: 'eventDuration',
       title: 'Durée',
@@ -106,13 +114,21 @@ export default defineType({
     }),
     defineField({
       name: 'region',
-      title: 'Canton',
+      title: 'Région',
       type: 'string',
-      hidden: ({parent}) => parent?.eventLocation !== 'onsite',
       options: {
-        list: ['Genève', 'Vaud', 'Neuchâtel', 'Jura', 'Fribourg', 'Valais'], // Add your region options here
+        list: [
+          {title: 'Genève', value: 'Genève'},
+          {title: 'Vaud', value: 'Vaud'},
+          {title: 'Neuchâtel', value: 'Neuchâtel'},
+          {title: 'Jura', value: 'Jura'},
+          {title: 'Fribourg', value: 'Fribourg'},
+          {title: 'Valais', value: 'Valais'},
+          {title: 'France voisine', value: 'France voisine'},
+        ],
       },
     }),
+
     defineField({
       name: 'zoomLink',
       title: 'Lien réunion',
@@ -181,6 +197,13 @@ export default defineType({
       title: 'Prix min.',
       type: 'number',
       hidden: ({parent}) => parent?.eventPriceType !== 'fourchette',
+    }),
+    defineField({
+      name: 'isValidated',
+      title: 'Validé',
+      type: 'boolean',
+      initialValue: false,
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

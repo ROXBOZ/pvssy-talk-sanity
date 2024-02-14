@@ -15,6 +15,11 @@ export default defineType({
       title: 'Typeform Médias',
       type: 'url',
     }),
+    defineField({
+      name: 'agendaTypeform',
+      title: 'Typeform Agenda',
+      type: 'url',
+    }),
   ],
 
   preview: {
