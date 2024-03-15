@@ -37,6 +37,15 @@ export default defineType({
         'Modifier le slug peut entraîner des ruptures de lien. Donc, ne le faites que si vous savez ce que vous faites.',
     }),
     defineField({
+      name: 'isArticle',
+      title: 'Faire apparaître dans la navigation des articles',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Pour les pages nobles ;) comme l’intro et les guides, mais pas pour les pages boring de type conditions générales',
+    }),
+
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
