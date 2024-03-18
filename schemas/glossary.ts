@@ -28,10 +28,16 @@ export default defineType({
           input
             .toLowerCase()
             .replace(/\s+/g, '-')
+            .slice(0, 200)
+            .replace(/’/g, '-')
             .replace(/à/g, 'a')
             .replace(/é/g, 'e')
-            .slice(0, 200)
-            .replace(/’/g, '-'),
+            .replace(/è/g, 'e')
+            .replace(/ê/g, 'e')
+            .replace(/ï/g, 'i')
+            .replace(/ü/g, 'u')
+            .replace(/ô/g, 'o')
+            .replace(/œ/g, 'oe'),
       },
       description:
         'partie visible dans l’URL après le "#" lorsqu’on clique sur un terme dans un article',
