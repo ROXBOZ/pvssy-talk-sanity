@@ -29,12 +29,7 @@ export default defineType({
             .replace(/’/g, '-'),
       },
     }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description: 'La description sera utilisée dans le menu de BADASS :D',
-    }),
+
     defineField({
       name: 'filters',
       title: 'Filtres (Où as-tu mal ?)',
