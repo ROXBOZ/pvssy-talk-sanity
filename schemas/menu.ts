@@ -11,6 +11,41 @@ export default defineType({
       type: 'array',
       of: [{type: 'map'}, {type: 'pageReference'}, {type: 'customLink'}],
     }),
+
+    defineField({
+      name: 'marquee',
+      title: 'Bannière',
+      type: 'object',
+      description: 'Optionel',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Text',
+          type: 'string',
+          validation: (Rule) => [
+            Rule.max(100).warning('Les messages plus courts sont généralement meilleurs'),
+          ],
+        }),
+
+        defineField({
+          name: 'callToAction',
+          title: 'Call to action',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+            }),
+            defineField({
+              name: 'link',
+              title: 'Link',
+              type: 'string',
+            }),
+          ],
+        }),
+      ],
+    }),
     defineField({
       name: 'footerMenu',
       title: 'Footer Menu',
