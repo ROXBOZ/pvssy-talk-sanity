@@ -21,9 +21,21 @@ export default defineType({
         defineField({
           name: 'text',
           title: 'Text',
-          type: 'string',
+          type: 'blockContent',
           validation: (Rule) => [
-            Rule.max(100).warning('Les messages plus courts sont généralement meilleurs'),
+            Rule.custom((blocks) => {
+              // Check if blocks is defined and it's an array
+              if (blocks && Array.isArray(blocks)) {
+                // Iterate through each block
+                for (const block of blocks) {
+                  // Check the length of text in the block
+                  if (block.children && block.children[0] && block.children[0].text.length > 100) {
+                    return 'Les messages plus courts sont généralement meilleurs'
+                  }
+                }
+              }
+              return true // If no validation issue found, return true
+            }),
           ],
         }),
 
