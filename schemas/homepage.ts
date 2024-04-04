@@ -19,7 +19,7 @@ export default defineType({
       title: 'Content',
       type: 'array',
       of: [
-        {type: 'navBlock'},
+        // {type: 'navBlock'},
         {type: 'painsBlock'},
         {type: 'textImageBlock'},
         {type: 'linkCards'},
