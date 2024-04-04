@@ -13,19 +13,19 @@ export default defineType({
       validation: (Rule) => [Rule.required()],
     }),
 
-    defineField({
-      name: 'color',
-      title: 'Couleur',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Primaire', value: 'primary'},
-          {title: 'Secondaire', value: 'secondary'},
-          {title: 'Tertiaire', value: 'tierary'},
-        ],
-      },
-      validation: (Rule) => [Rule.required()],
-    }),
+    // defineField({
+    //   name: 'color',
+    //   title: 'Couleur',
+    //   type: 'string',
+    //   options: {
+    //     list: [
+    //       {title: 'Primaire', value: 'primary'},
+    //       {title: 'Secondaire', value: 'secondary'},
+    //       {title: 'Tertiaire', value: 'tierary'},
+    //     ],
+    //   },
+    //   validation: (Rule) => [Rule.required()],
+    // }),
 
     defineField({
       name: 'text',
