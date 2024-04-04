@@ -1,6 +1,8 @@
+import LinkCards from './linkCards'
 import blockContent from './blockContent'
 import customLink from './customLink'
 import directory from './directory'
+import dotsZone from './dotsZone'
 import event from './event'
 import exercise from './exercise'
 import glossary from './glossary'
@@ -17,11 +19,11 @@ import partnersLogos from './partnersLogos'
 import product from './product'
 import profession from './profession'
 import region from './region'
-import {seo} from './seo'
 import seoManager from './seoManager'
 import tag from './tag'
 import textImageBlock from './textImageBlock'
 import typeform from './typeform'
+import typeformItem from './typeformItem'
 
 export const schemaTypes = [
   blockContent,
@@ -47,4 +49,7 @@ export const schemaTypes = [
   partnersLogos,
   map,
   seoManager,
+  LinkCards,
+  dotsZone,
+  typeformItem,
 ]

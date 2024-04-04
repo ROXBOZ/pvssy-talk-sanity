@@ -1,26 +1,26 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'painsBlock',
-  title: 'Cartes Douleurs',
+  name: 'typeformItem',
+  title: 'Typeform',
   type: 'document',
-  icon: () => '💥',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Nom',
       type: 'string',
-      validation: (Rule) => [Rule.required()],
+      description: 'Usage interne',
     }),
     defineField({
-      name: 'text',
-      title: 'Text',
-      type: 'blockContent',
+      name: 'url',
+      title: 'Url',
+      type: 'string',
     }),
   ],
+
   preview: {
     select: {
-      title: 'title',
+      title: 'name',
     },
     prepare(selection) {
       const {title} = selection

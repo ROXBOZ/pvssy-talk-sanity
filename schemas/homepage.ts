@@ -13,46 +13,18 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'dotsZone',
-      title: 'Zone "petits pois"',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'text',
-          title: 'Text',
-          type: 'text',
-          rows: 2,
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'callToAction',
-          title: 'Call To Action',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'label',
-              title: 'Label',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'link',
-              title: 'Link',
-              type: 'reference',
-              to: [{type: 'page'}],
-              validation: (Rule) => Rule.required(),
-            }),
-          ],
-        }),
-      ],
-    }),
 
     defineField({
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{type: 'navBlock'}, {type: 'painsBlock'}, {type: 'textImageBlock'}],
+      of: [
+        {type: 'navBlock'},
+        {type: 'painsBlock'},
+        {type: 'textImageBlock'},
+        {type: 'linkCards'},
+        {type: 'dotsZone'},
+      ],
     }),
     defineField({
       name: 'seo',

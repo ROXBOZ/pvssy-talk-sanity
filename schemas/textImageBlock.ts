@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 export default defineType({
   name: 'textImageBlock',
   title: 'Block de texte avec image',
-
+  icon: () => '🖼️',
   type: 'object',
   fields: [
     defineField({

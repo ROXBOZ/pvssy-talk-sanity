@@ -6,19 +6,17 @@ export default defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'directoryTypeform',
-      title: 'Typeform Annuaire',
-      type: 'url',
-    }),
-    defineField({
-      name: 'mediasTypeform',
-      title: 'Typeform Médias',
-      type: 'url',
-    }),
-    defineField({
-      name: 'agendaTypeform',
-      title: 'Typeform Agenda',
-      type: 'url',
+      name: 'typeforms',
+      title: 'Typeforms',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'typeformItem',
+          title: 'Typeform',
+          type: 'reference',
+          to: [{type: 'typeformItem'}],
+        }),
+      ],
     }),
   ],
 
