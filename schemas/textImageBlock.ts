@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'textImageBlock',
-  title: 'TextImageBlock',
+  title: 'Block de texte avec image',
 
   type: 'object',
   fields: [
@@ -13,20 +13,6 @@ export default defineType({
       validation: (Rule) => [Rule.required()],
     }),
 
-    // defineField({
-    //   name: 'color',
-    //   title: 'Couleur',
-    //   type: 'string',
-    //   options: {
-    //     list: [
-    //       {title: 'Primaire', value: 'primary'},
-    //       {title: 'Secondaire', value: 'secondary'},
-    //       {title: 'Tertiaire', value: 'tierary'},
-    //     ],
-    //   },
-    //   validation: (Rule) => [Rule.required()],
-    // }),
-
     defineField({
       name: 'text',
       title: 'Text',
@@ -36,8 +22,6 @@ export default defineType({
     defineField({
       name: 'callToAction',
       title: 'Call to action',
-      description: 'Terminer le texte par un lien OU ajouter un bouton mais pas les deux.',
-
       type: 'object',
       fields: [
         defineField({
@@ -46,10 +30,36 @@ export default defineType({
           type: 'string',
         }),
         defineField({
-          name: 'link',
+          name: 'linkType',
+          title: 'Type de Lien',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Page', value: 'page'},
+              {title: 'Ressource', value: 'ressource'},
+            ],
+          },
+        }),
+        defineField({
+          name: 'linkRef',
           title: 'Link',
           type: 'reference',
           to: [{type: 'page'}],
+          hidden: ({parent}) => parent?.linkType !== 'page',
+        }),
+        defineField({
+          name: 'linkRes',
+          title: 'Link',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Exercices', value: 'exercices'},
+              {title: 'Glossaire', value: 'glossaire'},
+              {title: 'Annuaire', value: 'annuaire'},
+              {title: 'Médias', value: 'medias'},
+            ],
+          },
+          hidden: ({parent}) => parent?.linkType !== 'ressource',
         }),
       ],
     }),
