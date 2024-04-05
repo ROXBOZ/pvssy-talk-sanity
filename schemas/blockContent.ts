@@ -22,7 +22,14 @@ export default defineType({
         decorators: [
           {title: 'Gras', value: 'strong'},
           {title: 'Italique', value: 'em'},
-          {title: 'Souligné', value: 'underline'},
+          {
+            title: 'Souligné',
+            value: 'u',
+            blockEditor: {
+              render: ({children}: any) => React.createElement('span', {className: 'u'}, children),
+              icon: () => '⎯',
+            },
+          },
           {
             title: 'Logo',
             value: 'logo',
