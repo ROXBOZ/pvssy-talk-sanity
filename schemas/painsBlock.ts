@@ -17,6 +17,12 @@ export default defineType({
       title: 'Text',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'note',
+      title: 'Note',
+      description: 'Message en bas à droite pour boucher le trou',
+      type: 'blockContent',
+    }),
   ],
   preview: {
     select: {
