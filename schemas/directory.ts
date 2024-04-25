@@ -178,6 +178,13 @@ export default defineType({
           initialValue: false,
           validation: (Rule) => Rule.required(),
         }),
+        defineField({
+          name: 'tarmed',
+          title: 'Tarifs TARMED',
+          type: 'boolean',
+          initialValue: false,
+          validation: (Rule) => Rule.required(),
+        }),
       ],
     }),
 
