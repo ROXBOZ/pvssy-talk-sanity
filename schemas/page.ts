@@ -45,12 +45,12 @@ export default defineType({
     //     'Pour les pages nobles ;) comme l’intro et les guides, mais pas pour les pages boring de type conditions générales',
     // }),
 
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description: 'La description sera utilisée dans le menu de BADASS :D',
-    }),
+    // defineField({
+    //   name: 'description',
+    //   title: 'Description',
+    //   type: 'text',
+    //   description: 'La description sera utilisée dans le menu de BADASS :D',
+    // }),
     defineField({
       name: 'image',
       title: 'Image',
@@ -71,7 +71,6 @@ export default defineType({
       name: 'subtitle',
       title: 'En-tête',
       type: 'blockContent',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'sections',

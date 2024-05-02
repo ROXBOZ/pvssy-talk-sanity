@@ -46,9 +46,9 @@ export default defineConfig({
             S.documentTypeListItem('media')
               .title('Médias')
               .icon(() => '🎙️'),
-            S.documentTypeListItem('product')
-              .title('Produits')
-              .icon(() => '🛍️'),
+            // S.documentTypeListItem('product')
+            //   .title('Produits')
+            //   .icon(() => '🛍️'),
             S.listItem()
               .title('SEO Ressources')
               .id('seoManager')
