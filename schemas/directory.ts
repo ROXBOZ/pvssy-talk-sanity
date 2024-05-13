@@ -158,6 +158,7 @@ export default defineType({
           name: 'pricingMin',
           title: 'Min',
           type: 'number',
+          description: 'Ne pas mettre 0',
         }),
         defineField({
           name: 'pricingMax',
