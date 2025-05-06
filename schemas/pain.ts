@@ -6,6 +6,20 @@ export default defineType({
   name: 'pain',
   title: 'Douleurs',
   type: 'document',
+  groups: [
+    {
+      title: 'Médical',
+      name: 'medical',
+    },
+    {
+      title: 'Sexo',
+      name: 'sexo',
+    },
+    {
+      title: 'SEO',
+      name: 'seo',
+    },
+  ],
   fields: [
     defineField({
       name: 'name',
@@ -61,6 +75,7 @@ export default defineType({
       name: 'medicalApproach',
       title: 'Approche médicale',
       type: 'object',
+      group: 'medical',
 
       fields: [
         defineField({
@@ -144,6 +159,7 @@ export default defineType({
     defineField({
       name: 'sexologicApproach',
       title: 'Approche sexologique',
+      group: 'sexo',
       type: 'object',
       fields: [
         defineField({
@@ -207,6 +223,7 @@ export default defineType({
       name: 'seo',
       title: 'Seo',
       type: 'object',
+      group: 'seo',
       fields: [...seo],
     }),
   ],
